@@ -1,0 +1,18 @@
+Terminal 1: ros2 launch turtlebot3_gazebo turtlebot3_maze.launch.py
+Terminal 2: ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
+Terminal 3: ros2 launch wall_follower wall_follower.launch.py use_sim_time:=true
+
+Real robot: same as Terminal 3 without use_sim_time (the default is false); start the
+robot camera first, and keep the robot and laptop clocks synchronised (NTP/chrony):
+camera frames and marker detections older than 1 s are ignored.
+
+Stage 2
+1. Restart robot bringup (odom = 0), start cartographer, then the wall follower as above.
+   The marker file is written to ~/wall_follower_markers.csv (marker_file:=... to change).
+   The same start pose in map coordinates goes to ~/wall_follower_markers.csv.map_start;
+   keep both files together. Start Cartographer before the wall follower.
+2. At the end of the run save the map:
+   ros2 run nav2_map_server map_saver_cli -f ~/map
+3. Stop cartographer and the wall follower. Put the robot back at the same start pose.
+4. Edit the marker order in the file if required, then:
+   ros2 launch wall_follower navigation.launch.py map:=$HOME/map.yaml
