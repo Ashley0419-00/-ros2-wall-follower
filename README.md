@@ -111,6 +111,10 @@ One recorded simulation run covered an estimated **21.44 m** over **232 s** and 
 
 This is a team-based academic robotics project, curated here to demonstrate ROS 2 integration, perception-to-control workflows, state-machine design, debugging, and validation. Source-level attribution and license notices are preserved in [ATTRIBUTION.md](ATTRIBUTION.md); claims about individual contribution should remain aligned with the contributor's actual work.
 
+## Stage 2 personal contribution
+
+The [retrospective Stage 2 Mission Manager portfolio](docs/stage-2-mission-manager.md) documents the submitted mission loop, its team dependencies and isolated software checks.
+
 ## Safety
 
 The controller is intended for education and simulation. Before using it on physical hardware, add an emergency-stop mechanism, validate sensor failure behaviour, tune limits for the platform, and test in a controlled area.
