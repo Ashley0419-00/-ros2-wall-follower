@@ -8,6 +8,12 @@ The Mission Manager keeps route policy at the application level. It consumes ord
 
 The saved map, camera and landmark mapping pipeline, map export, localization and TF setup, map-health checks, launch/configuration and supporting navigation helpers belong to the integrated team project. Nav2 supplies planning and motion execution, and AMCL provides localization. The existing repository attribution applies to the wall-following and vision materials already present. See [ATTRIBUTION.md](../ATTRIBUTION.md).
 
+## Navigation versions in this portfolio
+
+The checked-in [marker_navigator.py](../src/wall_follower/scripts/marker_navigator.py) uses `BasicNavigator`, tries alternative approach poses, and records a failed visit before continuing with the next landmark. Its [launch file](../src/wall_follower/launch/navigation.launch.py) starts that implementation.
+
+The excerpt below is from the final submission's `waypoint_navigator.py`. Its mission loop stops on a failed action or a failed final-position check. The six checks on this page exercise that excerpt only.
+
 ## Verified excerpt
 
 Source: final submission archive `src.zip`, member `src/src/wall_follower/scripts/waypoint_navigator.py`, `MarkerNavigation.navigate()`, lines 404–428. The excerpt removes the enclosing method indentation. The enclosing node, approach-pose search, ROS plumbing and shared modules are required for deployment. This excerpt is documentation.
@@ -44,6 +50,12 @@ for number, marker in enumerate(markers, 1):
 ```
 
 ## Isolated software verification
+
+From the repository root, run the [verification script](verify_mission_loop.py) with Python 3.10 or later. It uses the standard library and runs the excerpt directly from this page.
+
+```sh
+python3 docs/verify_mission_loop.py
+```
 
 Six cases passed in a local Python harness that ran the submitted loop with synthetic markers and stubbed pose selection, action responses, TF, clock and logging.
 
