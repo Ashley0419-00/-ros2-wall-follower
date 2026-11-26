@@ -17,14 +17,14 @@ A portfolio-ready ROS 2 robotics project for TurtleBot3 that combines LiDAR-base
 
 ```mermaid
 flowchart TD
-  A[LiDAR /scan] --> B[Wall follower C++]
-  C[Odometry /odom] --> B
-  B --> D[Velocity /cmd_vel]
-  E[Camera image + intrinsics] --> F[Marker detector]
-  F --> G[/marker_position]
-  G --> H[TF point transformer]
-  I[Cartographer /map + /tf] --> H
-  H --> J[RViz MarkerArray + CSV]
+  A["LiDAR /scan"] --> B["Wall follower C++"]
+  C["Odometry /odom"] --> B
+  B --> D["Velocity /cmd_vel"]
+  E["Camera image + intrinsics"] --> F["Marker detector"]
+  F --> G["/marker_position"]
+  G --> H["TF point transformer"]
+  I["Cartographer /map + /tf"] --> H
+  H --> J["RViz MarkerArray + CSV"]
 ```
 
 ## Repository layout
